@@ -1,0 +1,26 @@
+{% extends 'admin/dashboard_layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center">
+            <a href="{{ url_for('admin.school_config')}}">Ecole</a>
+        </div>
+         <div class="col-xs-12 col-sm-12 col-md-3 text-center">
+            <a href="{{ url_for('admin.opened_hours')}}">Heures d'ouverture</a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 text-center">
+            <a href="{{ url_for('admin.cycle_config')}}">Cycle</a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 text-center">
+            <a href="{{ url_for('admin.service_config')}}">Services</a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 text-center">
+            <a href="{{ url_for('admin.role_config')}}">Roles</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        {% block form %}
+        {% endblock form %}
+    </div>
+{% endblock content %}

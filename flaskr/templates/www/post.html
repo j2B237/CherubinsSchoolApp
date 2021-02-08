@@ -1,0 +1,33 @@
+{% extends 'www/Layout_Base.html' %}
+
+{% block title %}
+	{{title}}
+{% endblock title %}
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="row ">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+				<h3 class="my-5">{{post.title}}</h3>
+				<small class="text-muted">Publié le {{ post.date_posted.strftime('%d-%m-%Y')}}</small>
+				<hr>
+				<p class="mt-4">
+					{{ post.content }}
+				</p>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-1 "></div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+				<aside class="mr-5 my-5">
+					<h4 class="my-5">Derniers articles</h4>
+					<ul class="list-inline">
+						{% for post in posts %}
+							<li><a href="{{ url_for('www.view_post', post_id=post.id) }}">{{ post.title[:20]}} ...</a></li>
+						{% endfor %}
+					</ul>
+				</aside>
+			</div>
+
+        </div>
+	</div>
+
+{% endblock content %}

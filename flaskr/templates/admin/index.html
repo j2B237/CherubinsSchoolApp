@@ -1,0 +1,111 @@
+{% extends 'admin/dashboard_layout.html' %}
+
+{% block content %}
+    {% if params == 1 %}
+        <div class="row">
+            <div class="col-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ school.name }}</h5>
+                    <hr>
+                    <p class="card-text">
+                        {{ school.description }}
+                    </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title text-center">{{ current_user.username}}</h5>
+                      <hr>
+                      <p class="card-text">
+                          {{ current_user.email }}
+                      </p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-4 mb-4">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title text-center">{{ posts }}</h5>
+                      <hr>
+                      <p class="card-text text-center">
+                          {% if posts <= 1 %}
+                            Post
+                          {% else %}
+                            Posts
+                          {% endif %}
+                      </p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-4 mb-4">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title text-center">{{ persons }}</h5>
+                      <hr>
+                      <p class="card-text text-center">
+                          {% if persons <= 1 %}
+                            Employé
+                          {% else %}
+                            Employés
+                          {% endif %}
+                      </p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-4 mb-4">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title text-center">{{ requests }}</h5>
+                      <hr>
+                      <p class="card-text text-center">
+                          {% if requests <= 1 %}
+                            Demande
+                          {% else %}
+                            Demandes
+                          {% endif %}
+                      </p>
+                  </div>
+                </div>
+            </div>
+
+            <!-- End row -->
+        </div>
+    {% else %}
+        <div class="row mb-3">
+            <div class="col-11 alert-warning mb-3">
+                <span class="">L'espace configuration permet de réaliser le paramétrage initial afin de pouvoir commencer à utiliser l'application.
+                    Les paramètres d'installation ne peuvent être remplis que par <b>les utilisateurs administrateurs </b>uniquement.
+                    L'étape obligatoire est le menu de configuration.
+                </span>
+            </div >
+            <a href="{{url_for('admin.configure') }}"> Configuration -> Ecole/Organisation</a>
+        </div>
+        <div class="row mb-5">
+            <p>Paramètres basiques pour personnaliser le comportement par défaut du logiciel (comportement lié au type d'école par exemple).</p>
+        </div>
+        <!-- Row for error message -->
+        <div class="row">
+            <!-- Display error messages
+        <div class="mb-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{category}} text-center">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </div>
+        -->
+        </div>
+    {% endif %}
+
+{% endblock content %}

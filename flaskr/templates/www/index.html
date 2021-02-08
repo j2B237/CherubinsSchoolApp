@@ -1,0 +1,146 @@
+{% extends 'www/Layout_Base.html' %}
+
+{% block title %}
+	{{title}}
+{% endblock title %}
+
+{% block banner %}
+	<div class="container-fluid">
+		<div class="row">
+			<div id="banner"class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('{{ url_for('static', filename='images/cherubins_7.jpg') }}');">
+				<div class="container">
+					<h1 class="py-5 text-center">{{ school.name }} apporte <strong>les compétences adéquates</strong> aux <strong>esprits créatifs</strong>!</h1>
+						<a class="btn btn-flat btn-warning" href="{{ url_for('www.contact')}}">Contactez-nous</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock banner %}
+
+{% block header %}
+{% endblock header %}
+
+
+{% block content %}
+	<div class="mb-5">
+		<!-- First row -->
+		<div class="row py-3 pedagogie">
+			<div class="col-xs-11 col-md-2"></div>
+			{% for c in school.cycles %}
+			<div class="col-xs-11 col-md-4">
+				<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title text-center">{{ c.designation}}</h5>
+						  <hr>
+						<p class="card-text">
+						  {{ c.description }}
+						</p>
+						<p class="text-center">
+						{% if c.designation == 'La maternelle'%}
+							<a href="{{ url_for('www.edit_maternelle')}}" class="btn btn-warning">En savoir plus</a>
+						{% else %}
+							<a href="{{ url_for('www.edit_primaire')}}" class="btn btn-warning">En savoir plus</a>
+						{% endif %}
+						</p>
+					  </div>
+				</div>
+			</div>
+			{% endfor %}
+			<div class="col-xs-11 col-md-2"></div>
+		</div>
+	</div>
+
+	<div class="container">
+		<!-- Second row -->
+		<div class="row mb-3">
+			<div class="col-xs-12 col-sm-12 col-md-6 me-4 ">
+				<img src="{{ url_for('static', filename='images/login.jpg') }}" class="img-fluid w-100 h-100 rounded shawdow-5">
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-5 ">
+				<h3 class="mb-4 page-actu-title">
+				 Présentation
+				</h3>
+				<p>
+					Situé à {{ school.address }}, "{{ school.name }}" {{ school.description }}.<br>
+					<b>Les horaires d'ouverture sont</b>: <br>
+					{% for d in school.OpenedHours %}
+						<small>{{ d.dayName }} : {{ d.dayHours }}</small><br>
+					{% endfor %}
+				</p>
+				<p><a href="{{ url_for('www.index') }}" class="btn btn-warning">En savoir plus</a></p>
+
+			</div>
+		</div>
+
+		<!-- Third row -->
+		<div class="row">
+			<h3 class="pt-4 mb-4 border-bottom py-4 page-actu-title">
+				 Actualités
+			</h3>
+			<div class="row">
+				{% for post in posts %}
+				<div class="col-xs-11 col-md-4">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title"><b>{{post.title}}</b></h5>
+						<p class="card-text mt-4">
+							<a href="{{ url_for('www.view_post', post_id=post.id) }}" class="btn-outline-warning ">Voir</a>
+						</p>
+					  </div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="col-4">
+				<a href="{{ url_for('www.edit_actualite')}}" class="mt-2 btn btn-warning">Lire tout</a>
+			</div>
+		</div>
+
+		<!-- Fourth row -->
+		<div class="row">
+			<h3 class="pb-4 mb-4  page-content border-bottom mt-4 pt-5">
+				{{ school.name }} en image
+			</h3>
+			<!-- Carousel wrapper -->
+			<div class="row mb-5">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<img src="{{ url_for('static', filename='images/le_vivre_ens_3.jpg') }}" class="img-fluid shadow-5" alt="La Maternelle">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<img src="{{ url_for('static', filename='images/le_vivre_ens_2.jpg') }}" class="img-fluid shadow-5" alt="La Maternelle">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<img src="{{ url_for('static', filename='images/Le_personnel.jpg') }}" class="img-fluid shadow-5" alt="La Maternelle">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<img src="{{ url_for('static', filename='images/manuel_scolaire.jpg') }}" class="img-fluid shadow-5" alt="La Maternelle">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
+					<a href="{{ url_for('www.edit_mediatheque')}}" class="btn btn-warning">Voir tout</a>
+				</div>
+
+			</div>
+		</div>
+		
+	</div>
+{% endblock content %}
+
+
+
+

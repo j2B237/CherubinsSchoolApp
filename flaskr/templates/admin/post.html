@@ -1,0 +1,35 @@
+{% extends 'admin/dashboard_layout.html' %}
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-8 mb-4">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title"><b>{{post.title}}</b></h5>
+                          <small>Publié le {{ post.date_posted.strftime("%d-%m-%Y") }}</small>
+						<p class="card-text">
+							{{ post.content }}
+						</p>
+					  </div>
+					</div>
+				</div>
+				<div class="col-4">
+					{% if post.user_id == current_user.id %}
+						<div class="mb-4">
+							<a href="{{ url_for('admin.update_post', post_id=post.id)}}" class="btn btn-warning">Modifier</a>
+						</div>
+
+						<div class="mb-4">
+							<form action="{{ url_for('admin.delete_post', post_id=post.id)}}" method="post">
+								<input type="submit" value="Supprimer" class="btn btn-danger" onclick= "return confirm('Etes-vous sure ?')">
+							</form>
+						</div>
+
+					{% endif %}
+				</div>
+
+			</div>
+	</div>
+
+{% endblock content %}
