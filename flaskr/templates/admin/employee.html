@@ -1,0 +1,48 @@
+{% extends 'admin/dashboard_layout.html' %}
+
+{% block content %}
+    <h1 class="float-left mb-4">Profil de {{ employee.username }}</h1>
+    <div class="row mb-5">
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 mb-4 "></div>
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-6">
+            <div class="card-product mb-4">
+              <img src="{{ url_for('static', filename='images/default.png')}}" alt="user profile"/>
+              <div class="card-product-infos">
+                <h2 class="mt-4">{{ employee.role.designation }}</h2>
+                <ul class="list-inline mt-3">
+                    <li><b>Nom :</b> {{ employee.username }}</li>
+                    <li><b>Email :</b> {{ employee.email }}</li>
+                    <li><b>Tel :</b> {{ employee.phone_number }}</li>
+                    <li>
+                        {% if employee.still_Working %}
+                            <b>En poste depuis le</b> {{ employee.hired_at.strftime('%d-%m-%Y')}}
+                        {% else %}
+                            <b>Fin de contrat le</b>{{ employee.fired_On }}
+                        {% endif %}
+                    </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 mb-1 "></div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 mb-4">
+            <a href="{{ url_for('admin.update_employee', employee_id=employee.id)}}" class="btn btn-warning mb-3">Modifier profil</a>
+            <a href="{{ url_for('admin.contact_employee', employee_id=employee.id) }}" class="btn btn-outline-secondary mb-3">Contacter</a>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Display Error messages -->
+        <div class="mb-4">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} text-center">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    {% block form %}{% endblock form %}
+{% endblock content %}

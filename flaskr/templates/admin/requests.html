@@ -1,0 +1,26 @@
+{% extends 'admin/dashboard_layout.html' %}
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="row">
+				<h3 class="mb-5 border-bottom pb-3">TOUTES LES DEMANDES UTILISATEURS</h3>
+				{% for request in requests %}
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mb-4">
+					<div class="card">
+					  <div class="card-body">
+						<h6 class="card-title">Message envoyé : le <b>{{request.date_posted.strftime("%d-%m-%Y")}}</b></h6>
+						<p class="card-text">
+							Par : {{request.username}} <br>
+							Contact : {{ request.contact }}
+						</p>
+					  </div>
+					</div>
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 my-4">
+					<a href="{{ url_for('admin.view_request_user', request_id=request.id )}}" class="btn btn-warning" >Voir</a>
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+
+{% endblock content %}

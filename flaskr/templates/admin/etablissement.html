@@ -1,0 +1,103 @@
+{% extends 'admin/dashboard_layout.html' %}
+
+{% block content %}
+
+    <h3>Vue d'ensemble de l'établissement</h3>
+
+    <!-- First row -->
+    <div class="row my-4 pt-4">
+        <!-- Display Error messages -->
+        <div class="mb-4">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} text-center">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="col-5 box box-img pb-3 ">
+            <!-- Row presentation -->
+            <div class="row">
+                <!-- IMG -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <img src="{{ url_for('static', filename='images/university(1).png')}}" alt="Etablissement icone" class="img-fluid rounded">
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-1"></div>
+                <!-- Nom et Contacts  -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                    <ul class="list-inline">
+                        <li>{{ school.name }}</li>
+                        <li>{{ school.address }}</li>
+                        <li>{{ school.email }}</li>
+                        <li>{{ school.phone_number }}</li>
+                        {% if school.website%}
+                            <li>{{ school.website }}</li>
+                        {% endif %}
+                    </ul>
+                    <a href="{{ url_for('admin.edit_school')}}" class="btn btn-outline-secondary">Modifier</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-1"></div>
+        <!-- Description -->
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 box-text ">
+            <h5 class="float-left">Description</h5>
+            <small>{{ school.description }}</small>
+        </div>
+    </div>
+
+    <!-- Second row -->
+    <div class="row mb-4">
+        <!-- Heures ouverture -->
+        <div class="col-4">
+            <h5 class="mb-3">Heures d'ouverture</h5>
+            {% for d in school.OpenedHours %}
+                <small>{{ d.dayName }} : {{ d.dayHours }}</small><br>
+            {% endfor %}
+        </div>
+        <div class="col-2"></div>
+        <!-- Cycles -->
+        <div class="col-6">
+            <h5>Cycles</h5>
+            {% for c in school.cycles %}
+                <h6>{{ c.designation}}</h6>
+                <small>{{ c.description }}</small>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <!-- Third row -->
+    <div class="row mb-5">
+        <div class="col-6 pt-3 border-top">
+            <h5 class="mb-4">Services</h5>
+            {% for s in school.services %}
+                <h6 class="mt-5 mb-3">{{ s.designation }}</h6>
+                <small>{{ s.description }}</h6>
+            {% endfor %}
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+    <!-- Fourth row -->
+    <div class="row">
+        <div class="col-6 pt-3 border-top">
+            <h5 class="mb-4">Roles</h5>
+            {% for r in roles %}
+                <ul class="list-inline">
+                    <li class="mt-2 mb-2">{{ r.designation }}</li>
+                </ul>
+
+            {% endfor %}
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+
+
+{% endblock content %}

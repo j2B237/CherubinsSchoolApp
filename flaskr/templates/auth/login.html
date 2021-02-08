@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Les Chérubins - Ecole maternelle - primaire</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/mdb-favicon.ico')}}" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/auth/mdb.min.css') }}" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+  <body>
+    <main class="mt-5">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-6">
+              <a href="{{ url_for('www.index')}}">
+                <img src="{{ url_for('static', filename='images/logo_ecole.jpg') }}" class="img-fluid shadow-5 rounded mb-4">
+              </a>
+          </div>
+          <div class="col-md-1 col-lg-1"></div>
+          <div class="col-md-4 col-lg-4">
+            <h1 class=" mb-5">{{ title }}</h1>
+              <!-- Display Error messages -->
+            <div class="mb-4">
+                {% with messages= get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} text-center">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <!-- Form group -->
+            <form action="" method="POST">
+              {{ form.hidden_tag() }}
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                  {% if form.email.errors %}
+                      {{ form.email(class = "form-control form-control-lg is-invalid", id="form.email") }}
+                      <div class="invalid-feedback">
+                          {% for error in form.email.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.email(class = "form-control", id="form.email") }}
+                  {{ form.email.label(class = "form-label", for="form.email") }}
+                  {% endif %}
+
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                {% if form.password.errors %}
+                      {{ form.password(class = "form-control form-control-lg is-invalid", id="form.password") }}
+                      <div class="invalid-feedback">
+                          {% for error in form.password.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.password(class = "form-control", id="form.password") }}
+                  {% endif %}
+                  {{ form.password.label(class = "form-label", for="form.password") }}
+              </div>
+
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row my-4">
+                <div class="col text-center">
+                  <!-- Simple link -->
+                  <a href="#!">Mot de passe oublié?</a>
+                </div>
+              </div>
+              <!-- Submit button -->
+               {{ form.submit(class = "btn btn-primary btn-block") }}
+            </form>
+            <!-- End form -->
+          </div>
+          <div class="col-md-1 col-lg-1"></div>
+        </div>
+      </div>
+    </main>
+    <!-- End main -->
+
+    <!-- Footer -->
+    <div class="container-fluid">
+      <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+          © 2020 Copyright:
+          <a class="text-dark" href="https://digitalschools.sn/">digitalschools.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- End footer -->
+    </div>
+
+    <!-- End your project here-->
+  </body>
+
+  <!-- MDB -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
+</html>

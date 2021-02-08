@@ -1,0 +1,41 @@
+{% extends 'www/Layout_Base.html' %}
+
+{% block title %}
+	{{title}}
+{% endblock title %}
+
+
+{% block banner %}
+	<div class="container-fluid">
+		<div class="row">
+			<div id="banner"class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('{{ url_for('static', filename='images/img4.jpg') }}');">
+				<div class="container">
+					<h1 class="py-5 text-center"> <strong>Actualités</strong></h1>
+					<a class="btn btn-flat btn-warning" href="{{url_for('www.contact')}}">Contactez-nous</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock banner %}
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="row">
+				<h2 class="mb-5 border-bottom pb-3">LES DERNIERES NOUVELLES</h2>
+				{% for post in posts %}
+				<div class="col-xs-11 col-md-4 mb-4">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title"><b>{{post.title}}</b></h5>
+						<p class="card-text">
+							<a href="{{ url_for('www.view_post', post_id=post.id)}}" class="btn btn-warning">Lire</a>
+						</p>
+
+					  </div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+
+{% endblock content %}

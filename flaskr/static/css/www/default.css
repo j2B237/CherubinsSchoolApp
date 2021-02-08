@@ -1,0 +1,298 @@
+body{
+	max-width: 100%;
+	max-height: 100%;
+	font-family: sans-serif;
+}
+
+h1 h3 h4 h5{
+	font-family: 'Roboto', sans-serif;
+}
+
+header a {
+	text-decoration: none;
+}
+
+/*#header{
+	width: 100%;
+	background-color: rgb(250,250,250);
+	padding: 10px;
+	border-bottom: 0.5px rgb(220,220,220) solid;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	z-index: 1069;
+}
+*/
+.header-title h1{
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: bolder;
+	line-height: 1.5em;
+}
+.header-title h1:before{
+	content: "|";
+	color: #0e49b5;
+	font-size: 30px;
+	margin-right: 10px;
+}
+
+
+/*Styling Image card*/
+.avatar {
+  width: 50px;
+  border-radius: 50%;
+  border: 1px #61b15a solid;
+}
+
+.avatar-large {
+  width: 80px;
+  border-radius: 50%;
+  border: 1px #61b15a solid;
+}
+
+
+/*Styling banner */
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  text-align: center;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner hr{
+    color : #61b15a;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+
+/*Styling button*/
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #1EDD88;
+  transition: background 0.3s ease;
+}
+
+
+/*Styling dropdown*/
+
+.dropbtn {
+	text-decoration: none;
+	background-color: #4CAF50;*/
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	border-radius: 2px;
+	opacity: 0.7;
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+  
+}
+.dropdown-content:hover{
+	 z-index: 2000;
+}
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: rgb(20,20,20) !important;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px grey solid;
+}
+
+.dropdown-item{
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content a:hover:before{
+	content:"|";
+	font-size: 20px;
+	color: #61b15a;
+	transition: content 1sec;
+	margin-left: 0px;
+	margin-right: 5px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+/* Change color of dropdown links on hover */
+.navbar-nav li:hover {
+	background-color: rgb(250,250,250);
+}
+
+.nav-item{
+	font-weight: bolder;
+}
+.nav-item a:hover{
+	color: #0e49b5 !important;
+	background-color: #ffc107;
+}
+
+/*Styling pedagogie*/
+.pedagogie{
+	background-color: #61b15a;
+}
+
+/*Cards Styling*/
+
+.page-accueil-title{
+	font-size: 16px;
+	color: #0e49b5;
+}
+
+.page-accueil-content{
+	padding: 20px 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.page-accueil-form {
+	text-align: left;
+	border: 0.5px rgb(240,240,240) solid;
+	border-radius: 2px;
+	box-shadow: -0.5px 1px 2.5px rgb(220,220,220);
+}
+.page-accueil-form h3{
+	line-height: 1.5em;
+	font-size: 15px;
+	font-weight: bolder;
+}
+.page-actu-title{
+	letter-spacing: 0.125em;
+}
+
+.page-actu-title:before{
+	color: #61b15a;
+	margin-left: 0px;
+	content : "|";
+}
+.page-content h3{
+	letter-spacing: 0.125em;
+}
+
+.page-content h3:before{
+	color: #61b15a;
+	margin-left: 0px;
+	content : "|";
+}
+
+/*Styling cards */
+.card hr{
+	color: #ffc107;
+	padding: 2px;
+}
+
+.card:hover{
+	box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
+
+
+/* Styling caroussel */
+
+/*.image-caroussel{
+    width: 100%;
+    height: 150px;
+}*/
+
+.container-img{
+   height: 120px;
+}
+
+/*Styling footer*/
+footer{
+	width: 100%;
+	color: rgb(250,250,250);
+	background: #61b15a;
+}
+
+footer h5{
+	font-weight: bolder;
+	
+}
+
+
+/*Media query*/
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+/* Breakpoint for extra small device : smartphone*/
+@media (max-width: 576px) {
+
+	.card{
+		margin-bottom: 20px;
+	}
+
+	.page-actu-title{
+		margin-top: 10px;
+	}
+
+
+}
+
+
+/* Breakpoint for medium device : Tablets*/
+@media (max-width: 768px) {
+	.card{
+		margin-bottom: 20px;
+	}
+	.page-actu-title{
+		margin-top: 40px;
+	}
+}
+
+/*medium devices (Tablets)*/
+@media (max-width: 992px) {
+	
+}
+
+@media (max-width: 1199.98px) {
+	
+}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (max-width: 1399.98px) {
+	
+
+}

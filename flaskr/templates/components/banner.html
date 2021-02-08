@@ -1,0 +1,24 @@
+<!-- Banner -->
+<div class="container-fluid">
+	<div class="row">
+		<div id="banner"class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://picsum.photos/200/300);">
+			<div class="container">
+				<h1 class="py-5">L'école du succès les Chérubins apporte <strong>les compétences adéquates</strong> aux <strong>esprits créatifs</strong>!</h1>
+				<a class="btn btn-flat btn-warning" href="#">Contactez-nous</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--  BANNER JINJA-->
+
+<div class="container-fluid">
+	<div class="row">
+		<div id="banner"class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('{{ url_for('static', filename='images/cherubins_7.jpg') }}');">
+			<div class="container">
+				<h1 class="py-5">Ecole Maternelle et Primaire Les Chérubins apporte <strong>les compétences adéquates</strong> aux <strong>esprits créatifs</strong>!</h1>
+				<a class="btn btn-flat btn-warning" href="#">Contactez-nous</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,248 @@
+{% extends 'admin/dashboard_layout.html' %}
+
+{% block content %}
+	<div class="container mt-5">
+		<h3 class="mb-3">ORGANIGRAMME DE L'ETABLISSEMENT</h3>
+		<div class="row">
+			<div class="accordion" id="accordionExample">
+				<!-- Display Employees Directeur-->
+				<div class="accordion-item">
+					<h4 class="accordion-header" id="headingOne">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					<b>Directeur(s)</b>
+					</button>
+					</h4>
+					<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<div class="row mb-4">
+							<!-- Display Employees Card-->
+							{% for employee in employees %}
+								{% if employee.role.designation == 'Directeur' %}
+									<div class="col-xs-12 col-sm-12 col-sm-6 col-lg-4 mt-4">
+										<div class="card">
+											<div style="width: 100px;" class="card-img-top rounded ms-2">
+												<img src="{{ url_for('static', filename='images/default.png')}}" alt="user profile">
+											</div>
+											<div class="card-body">
+												<h6 class="card-title"><b>{{employee.username}}</b></h6>
+												<h7>{{ employee.role.designation }}</h7>
+												<p class="card-text">
+												  <a href="{{ url_for('admin.employee_profil', employee_id=employee.id)}}" class="btn btn-warning my-2">Voir Profil </a>
+												</p>
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Display Employees Secretaire-->
+				<div class="accordion-item">
+					<h4 class="accordion-header" id="headingTwo">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					<b>Secretaire(s)</b>
+					</button>
+					</h4>
+					<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<div class="row mb-4">
+							<!-- Display Employees Card-->
+							{% for employee in employees %}
+								{% if employee.role.designation == 'Secrétaire' %}
+									<div class="col-xs-12 col-sm-12 col-sm-6 col-lg-4 mt-4">
+										<div class="card">
+											<div style="width: 100px;" class="card-img-top rounded ms-2">
+												<img src="{{ url_for('static', filename='images/default.png')}}" alt="user profile">
+											</div>
+											<div class="card-body">
+												<h6 class="card-title"><b>{{employee.username}}</b></h6>
+												<h7>{{ employee.role.designation }}</h7>
+												<p class="card-text">
+													<a href="{{ url_for('admin.employee_profil', employee_id=employee.id)}}" class="btn btn-warning my-2">Voir Profil </a>
+												</p>
+
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Display Employees Comptable-->
+				<div class="accordion-item">
+					<h4 class="accordion-header" id="headingThree">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					<b>Comptable(s)</b>
+					</button>
+					</h4>
+					<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<!-- Display Employees Card-->
+						<div class="row">
+							{% for employee in employees %}
+								{% if employee.role.designation == 'Comptable' %}
+									<div class="col-xs-12 col-sm-12 col-sm-6 col-lg-4 mt-4">
+										<div class="card">
+											<div style="width: 100px;" class="card-img-top rounded ms-2">
+												<img src="{{ url_for('static', filename='images/default.png')}}" alt="user profile">
+											</div>
+											<div class="card-body">
+												<h6 class="card-title"><b>{{employee.username}}</b></h6>
+												<h7>{{ employee.role.designation }}</h7>
+												<p class="card-text">
+													<a href="{{ url_for('admin.employee_profil', employee_id=employee.id)}}" class="btn btn-warning my-2">Voir Profil </a>
+												</p>
+
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Display Employees Enseignant-->
+				<div class="accordion-item">
+					<h4 class="accordion-header" id="headingFour">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					<b>Enseignant(s)</b>
+					</button>
+					</h4>
+					<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<!-- Display Employees Card-->
+						<div class="row">
+							{% for employee in employees %}
+								{% if employee.role.designation == 'Enseignant' %}
+									<div class="col-xs-12 col-sm-12 col-sm-6 col-lg-4 mt-4">
+										<div class="card">
+											<div style="width: 100px;" class="card-img-top rounded ms-2">
+												<img src="{{ url_for('static', filename='images/default.png')}}" alt="user profile">
+											</div>
+											<div class="card-body">
+												<h6 class="card-title"><b>{{employee.username}}</b></h6>
+												<h7>{{ employee.role.designation }}</h7>
+												<p class="card-text">
+													<a href="{{ url_for('admin.employee_profil', employee_id=employee.id)}}" class="btn btn-warning my-2">Voir Profil </a>
+												</p>
+
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Display Employees Infirmier-->
+				<div class="accordion-item">
+					<h4 class="accordion-header" id="headingFive">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+					<b>Infirmier(s)</b>
+					</button>
+					</h4>
+					<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<!-- Display Employees Card-->
+						<div class="row">
+							{% for employee in employees %}
+								{% if employee.role.designation == 'Infirmier' or employee.role.designation == 'Infirmiere' %}
+									<div class="col-xs-12 col-sm-12 col-sm-6 col-lg-4 mt-4">
+										<div class="card">
+											<div style="width: 100px;" class="card-img-top rounded ms-2">
+												<img src="{{ url_for('static', filename='images/default.png')}}" alt="user profile">
+											</div>
+											<div class="card-body">
+												<h6 class="card-title"><b>{{employee.username}}</b></h6>
+												<h7>{{ employee.role.designation }}</h7>
+												<p class="card-text">
+													<a href="{{ url_for('admin.employee_profil', employee_id=employee.id)}}" class="btn btn-warning my-2">Voir Profil </a>
+												</p>
+
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Display Employees Chauffeur-->
+				<div class="accordion-item">
+					<h4 class="accordion-header" id="headingSix">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+					<b>Chauffeur(s)</b>
+					</button>
+					</h4>
+					<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<!-- Display Employees Card-->
+						<div class="row">
+							{% for employee in employees %}
+								{% if employee.role.designation == 'Chauffeur' or employee.role.designation == 'Chauffeure' %}
+									<div class="col-xs-12 col-sm-12 col-sm-6 col-lg-4 mt-4">
+										<div class="card">
+											<div style="width: 100px;" class="card-img-top rounded ms-2">
+												<img src="{{ url_for('static', filename='images/default.png')}}" alt="user profile">
+											</div>
+											<div class="card-body">
+												<h6 class="card-title"><b>{{employee.username}}</b></h6>
+												<h7>{{ employee.role.designation }}</h7>
+												<p class="card-text">
+													<a href="{{ url_for('admin.employee_profil', employee_id=employee.id)}}" class="btn btn-warning my-2">Voir Profil </a>
+												</p>
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Display Employees Gardien-->
+				<div class="accordion-item">
+					<h4 class="accordion-header" id="headingSeven">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+					<b>Gardien(s)</b>
+					</button>
+					</h4>
+					<div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<!-- Display Employees Card-->
+						<div class="row">
+							{% for employee in employees %}
+								{% if employee.role.designation == 'Gardien' %}
+									<div class="col-xs-12 col-sm-12 col-sm-6 col-lg-4 mt-4">
+										<div class="card">
+											<div style="width: 100px;" class="card-img-top rounded ms-2">
+												<img src="{{ url_for('static', filename='images/default.png')}}" alt="user profile">
+											</div>
+											<div class="card-body">
+												<h6 class="card-title"><b>{{employee.username}}</b></h6>
+												<h7>{{ employee.role.designation }}</h7>
+												<p class="card-text">
+													<a href="{{ url_for('admin.employee_profil', employee_id=employee.id)}}" class="btn btn-warning my-2">Voir Profil </a>
+												</p>
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}

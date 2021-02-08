@@ -1,0 +1,86 @@
+{% extends 'admin/employee.html' %}
+
+{% block form %}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-1 mb-4"></div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 border-top">
+            <h3 class="my-4">Nouveau Message</h3>
+            <div class="mb-4">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} text-center">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <form action="{{ url_for('admin.contact_employee', employee_id=employee.id)}}" method="POST">
+                {{ form.hidden_tag() }}
+                <!-- Form Sender -->
+                <div class="form-group mb-2">
+                        {% if form.sender.errors %}
+                            {{ form.sender(class = "form-control form-control-lg is-invalid", id="form.username") }}
+                            <div class="invalid-feedback">
+                              {% for error in form.sender.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.sender.label(class = "form-label", for="form.sender") }}
+                            {{ form.sender(class = "form-control", id="form.sender") }}
+                        {% endif %}
+                    </div>
+                <!-- Form Recipient -->
+                <div class="form-group mb-2">
+                    {% if form.recipient.errors %}
+                        {{ form.recipient(class = "form-control form-control-lg is-invalid", id="form.username") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.recipient.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.recipient.label(class = "form-label", for="form.recipient") }}
+                        {{ form.recipient(class = "form-control", id="form.recipient") }}
+                    {% endif %}
+                </div>
+                <!-- form Object -->
+                <div class="form-group mb-2">
+                    {% if form.Object.errors %}
+                        {{ form.Object(class = "form-control form-control-lg is-invalid", id="form.Object") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.Object.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.Object.label(class = "form-label", for="form.Object") }}
+                        {{ form.Object(class = "form-control", id="form.Object") }}
+                    {% endif %}
+                </div>
+                <!-- form Message -->
+                <div class="form-group mb-2">
+                    {% if form.message.errors %}
+                        {{ form.message(class = "form-control form-control-lg is-invalid", id="form.message") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.message.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.message.label(class = "form-label", for="form.message") }}
+                        {{ form.message(class = "form-control", id="form.message", rows="8") }}
+                    {% endif %}
+                </div>
+                {{ form.submit(class = "btn btn-primary mt-2 mb-5" ) }}
+            </form>
+
+        </div>
+
+    </div>
+{% endblock form %}

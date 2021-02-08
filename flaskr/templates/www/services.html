@@ -1,0 +1,86 @@
+{% extends 'www/Layout_Base.html' %}
+
+{% block title %}
+	{{title}}
+{% endblock title %}
+
+
+{% block banner %}
+	<div class="container-fluid">
+		<div class="row">
+			<div id="banner"class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('{{ url_for('static', filename='images/img19.jpg') }}');">
+				<div class="container">
+					<h1 class="py-5 text-center"> <strong>Les Services</strong></h1>
+					<a class="btn btn-flat btn-warning" href="{{url_for('www.contact')}}">Contactez-nous</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock banner %}
+
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="row mb-2">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<img src="{{ url_for('static', filename='images/Transport.jpg') }} " class="img-fluid w-75 h-75 shadow-5 rounded" alt="La Maternelle">
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="card">
+					<div class="card-body">
+						{% for service in school.services %}
+							{% if service.designation == 'Transport' %}
+								<h5 class="card-title text-left">{{ service.designation }}</h5>
+								<hr>
+								<p class="card-text">
+								{{ service.description }}
+								</p>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<img src="{{ url_for('static', filename='images/img14.jpg') }} " class="img-fluid w-75 h-75 shadow-5 rounded" alt="Infirmerie">
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="card">
+					<div class="card-body">
+						{% for service in school.services %}
+							{% if service.designation == 'Infirmerie' %}
+								<h5 class="card-title text-left">{{ service.designation }}</h5>
+								<hr>
+								<p class="card-text">
+								{{ service.description }}
+								</p>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<img src="{{ url_for('static', filename='images/le_vivre_ens_3.jpg') }} " class="img-fluid w-75 h-75 shadow-5 rounded" alt="La Maternelle">
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="card">
+					<div class="card-body">
+						{% for service in school.services %}
+							{% if service.designation == 'Restauration' %}
+								<h5 class="card-title text-left">{{ service.designation }}</h5>
+								<hr>
+								<p class="card-text">
+								{{ service.description }}
+								</p>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}

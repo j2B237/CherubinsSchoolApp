@@ -1,0 +1,119 @@
+{% extends 'admin/configuration.html' %}
+
+{% block form %}
+    <div class="row mb-2">
+        <h7>Saisissez les informations de votre Ecole/organisation. Cliquez sur le bouton "Enregistrer" en bas de page pour sauvegarder</h7>
+        <!-- Display error messages -->
+        <div class="my-4">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{category}} text-center">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <form action="" method="POST">
+            {{ form.hidden_tag() }}
+                <!-- Name -->
+                <div class="form-group mb-2">
+                    {% if form.name.errors %}
+                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+						  {% for error in form.name.errors %}
+							  <span>{{ error }}</span>
+						  {% endfor %}
+						</div>
+                    {% else %}
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control ") }}
+                    {% endif %}
+                </div>
+
+                <!-- Description -->
+                <div class="form-group mb-2">
+                    {% if form.description.errors %}
+                        {{ form.description(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+						  {% for error in form.description.errors %}
+							  <span>{{ error }}</span>
+						  {% endfor %}
+						</div>
+                    {% else %}
+                        {{ form.description.label(class="form-label") }}
+                        {{ form.description(class="form-control ") }}
+                    {% endif %}
+                </div>
+
+                 <!-- Address -->
+                <div class="form-group mb-2">
+                    {% if form.address.errors %}
+                        {{ form.address(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+						  {% for error in form.address.errors %}
+							  <span>{{ error }}</span>
+						  {% endfor %}
+						</div>
+                    {% else %}
+                        {{ form.address.label(class="form-label") }}
+                        {{ form.address(class="form-control ") }}
+                    {% endif %}
+                </div>
+
+                <!-- Email -->
+                <div class="form-group mb-2">
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+						  {% for error in form.email.errors %}
+							  <span>{{ error }}</span>
+						  {% endfor %}
+						</div>
+                    {% else %}
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-control ") }}
+                    {% endif %}
+                </div>
+
+                  <!-- Phone_number -->
+                <div class="form-group mb-2">
+                    {% if form.phone_number.errors %}
+                        {{ form.phone_number(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+						  {% for error in form.phone_number.errors %}
+							  <span>{{ error }}</span>
+						  {% endfor %}
+						</div>
+                    {% else %}
+                        {{ form.phone_number.label(class="form-label") }}
+                        {{ form.phone_number(class="form-control ") }}
+                    {% endif %}
+                </div>
+
+                  <!-- Web -->
+                <div class="form-group mb-2">
+                    {% if form.web.errors %}
+                        {{ form.web(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+						  {% for error in form.web.errors %}
+							  <span>{{ error }}</span>
+						  {% endfor %}
+						</div>
+                    {% else %}
+                        {{ form.web.label(class="form-label") }}
+                        {{ form.web(class="form-control ") }}
+                    {% endif %}
+                </div>
+
+                  <!-- Submit button -->
+		        {{ form.submit(class = "btn btn-warning btn-block my-5") }}
+        </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+{% endblock form%}
